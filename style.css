@@ -1,0 +1,82 @@
+:root{
+  --black:#000;
+  --white:#fff;
+  --beige:#e7dcc6;
+  --beige-line:#c9b998;
+  --pad:clamp(1.25rem,5vw,4rem);
+  --font:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
+body{font-family:var(--font);font-weight:400;font-size:1.0625rem;line-height:1.6;color:var(--black);background:var(--white);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid currentColor;outline-offset:4px}
+
+/* Navigation */
+.nav{position:fixed;inset:0 0 auto 0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:1rem var(--pad);background:var(--black);color:var(--beige)}
+.brand{font-weight:800;text-decoration:none;letter-spacing:-.01em}
+.links{display:flex;gap:2rem}
+.links a{text-decoration:none;padding:.25rem 0;border-bottom:2px solid transparent;transition:border-color .2s}
+.links a:hover,.links a.active{border-color:var(--beige)}
+.menu-btn{display:none;background:none;border:1px solid var(--beige);color:var(--beige);font:inherit;padding:.35rem .9rem;border-radius:999px;cursor:pointer}
+
+/* Hero */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;gap:2rem;padding:7rem var(--pad) 3.5rem;background:var(--black);color:var(--beige)}
+.hero h1{font-weight:800;font-size:clamp(3.5rem,15vw,13rem);line-height:.9;letter-spacing:-.04em}
+.line{display:block;overflow:hidden;padding-bottom:.06em}
+.line span{display:block;transform:translateY(105%);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+.line:nth-child(2) span{animation-delay:.12s}
+.line:nth-child(3) span{animation-delay:.24s}
+@keyframes rise{to{transform:none}}
+.hero-text{max-width:34rem;color:var(--white);font-size:1.25rem}
+.btn{align-self:flex-start;text-decoration:none;background:var(--beige);color:var(--black);font-weight:600;padding:.85rem 1.6rem;border-radius:999px;transition:background .2s,color .2s}
+.btn:hover{background:var(--white)}
+
+/* Sections */
+.block{padding:clamp(4rem,10vw,8rem) var(--pad)}
+.light{background:var(--white);color:var(--black)}
+.beige{background:var(--beige);color:var(--black)}
+.dark{background:var(--black);color:var(--beige)}
+h2{font-weight:800;font-size:clamp(2.25rem,6vw,4.5rem);letter-spacing:-.03em;line-height:1;margin-bottom:2.5rem}
+h3{font-weight:600;font-size:1.1rem;margin-bottom:.75rem}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:2rem 4rem;max-width:64rem}
+.lead{font-size:clamp(1.3rem,2.6vw,1.75rem);line-height:1.35;font-weight:300}
+.cols p{max-width:36rem}
+
+/* Projects */
+.projects{list-style:none;max-width:64rem;border-top:1px solid var(--black)}
+.project{display:grid;grid-template-columns:1.1fr 1.6fr .8fr;gap:1rem 2rem;align-items:baseline;padding:1.75rem 0;border-bottom:1px solid var(--black);text-decoration:none;transition:padding .25s,background .25s}
+.project:hover,.project:focus-visible{background:var(--black);color:var(--beige);padding-left:1rem;padding-right:1rem}
+.p-title{font-size:1.5rem;font-weight:600;letter-spacing:-.01em}
+.p-tags{font-size:.95rem;text-align:right}
+
+/* Skills */
+.skills ul{list-style:none}
+.skills li{padding:.5rem 0;border-bottom:1px solid var(--beige-line)}
+
+/* Contact */
+.dark .lead{color:var(--white);max-width:34rem;margin-bottom:2rem}
+.email{display:inline-block;font-size:clamp(1.5rem,5vw,3.5rem);font-weight:800;letter-spacing:-.03em;text-decoration:none;border-bottom:3px solid var(--beige);word-break:break-word}
+.email:hover{color:var(--white);border-color:var(--white)}
+.social{list-style:none;display:flex;gap:2rem;margin-top:3rem;flex-wrap:wrap}
+.social a{text-decoration:underline;text-underline-offset:5px}
+.social a:hover{color:var(--white)}
+
+/* Footer */
+.foot{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:1.5rem var(--pad);background:var(--black);color:var(--beige);border-top:1px solid #333;font-size:.95rem}
+
+/* Mobile */
+@media (max-width:760px){
+  .menu-btn{display:block}
+  .links{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--black);padding:.5rem var(--pad) 1.25rem;display:none}
+  .links.open{display:flex}
+  .links a{padding:.75rem 0;border-bottom:1px solid #333}
+  .project{grid-template-columns:1fr}
+  .p-tags{text-align:left}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .line span{animation:none;transform:none}
+  *{transition:none!important}
+}
